@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background-color: #809fe6;
+}
+
+/* ----------------------- Wrapper ----------------------- */
+
+.wrapper{
+    margin: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 265px);
+    gap: 15px;
+}
+
+.wrapper li{
+    list-style: none;
+    background-color: #fff;
+    height: 250px;
+    border-radius: 10px;
+    padding: 15px 20px;
+}
+
+
+/* ----------------------- Add-box ----------------------- */
+
+.add-box , .icon, .bottom-content, .settings .menu li, .popup, header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.add-box{
+    justify-content: center;
+    flex-direction: column;
+}
+.add-box .icon{
+    width: 80px;
+    height: 80px;
+    font-size: 40px;
+    color: #809fe6;
+    border: 2px dashed #809fe6;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.add-box p{
+    font-size: 24px;
+    margin-top: 10px;
+    color: #809fe6;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* ----------------------- Note ----------------------- */
+
+.wrapper .note{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.note p{
+    font-size: 20px;
+    font-weight: 500;
+}
+.note span{
+    color: #575757;
+    display: block;
+    margin-top: 5px;
+    font-size: 15px;
+    padding-bottom: 10px;
+}
+.note .details{
+    max-height: 165px;
+    overflow-y: auto;
+}
+
+/* ----------------------- Bottom-content ----------------------- */
+
+.note .bottom-content{
+    border-top: 1px solid #ccc;   
+}
+.bottom-content span{
+    color: #6d6d6d;
+    font-size: 16px;
+}
+.bottom-content .settings i{
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* ----------------------- settings ----------------------- */
+
+.settings{
+    position: relative;
+}
+.settings .menu{
+    position: absolute;
+    box-shadow: 0 0 6px rgba(0,0,0,0.15);
+    bottom: 5px;
+    right: 5px;
+    padding: 5px 5px;
+    background: #fff;
+    border-radius: 5px;
+    transform: scale(0);
+    transform-origin: bottom right;
+    transition: transform 0.2s ease;
+}
+.settings.show .menu{
+    transform: scale(1); 
+}
+.settings .menu li{
+    height: 25px;
+    border-radius: 0;
+    justify-content: flex-start;
+    cursor: pointer;
+    padding: 15px 15px;
+    font-size: 16px;
+}
+.menu:hover{
+    background: #f5f5f5;
+}
+.menu li i{
+    padding-right: 5px;
+}
+
+/* ----------------------- Popup ----------------------- */
+
+.popup-box{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.4);
+}
+.popup-box .popup{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    max-width: 400px;
+    width: 100%;
+    z-index: 2;
+    justify-content: center;
+}
+
+.popup-box, .popup-box .popup{
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+.popup-box.show, .popup-box.show .popup{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.popup .content{
+    background-color: #fff;
+    border-radius: 10px ;
+    width: calc(100% - 15px);
+}
+.popup .content header{
+    padding: 10px 10px;
+    border: 1px solid #ccc;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+}
+.content header p {
+    font-size: 20px;
+    font-weight: 500;
+}
+.content header i{
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.521);
+    cursor: pointer; 
+}
+.popup form {
+    margin: 15px 25px 35px; 
+}
+.popup form label{
+    display: block;
+    padding: 5px 0;
+}
+/* .popup form input{
+    width: 100%;
+}
+.popup form textarea{
+    width: 100%;
+} */
+.popup form :where(input, textarea){
+    width: 100%;
+    height: 40px;
+    border: 1px solid #999;
+    border-radius: 6px;
+    padding: 5px;
+}
+.popup textarea{
+    height: 100px;
+    resize: none;
+}
+.popup .button{
+    text-align: center;
+}
+.popup button{
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #4672da;
+    border-radius: 5px;
+    font-size: 18px;
+    margin: 20px 0;
+    padding: 5px 20px;
+}
+.popup button:hover{
+   background: #809fe6;
+}
+.popup button:active{
+    background: #4672da;
+ }
