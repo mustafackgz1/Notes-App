@@ -12,7 +12,7 @@ let currentDate = document.querySelector(".date")
 const months = ["January","February","March","April","May","June",
 "July","August","September","October","November","December"]
 
-//eğer varsa localStoragedaki notes ları diziye çevirip aldık eğer yoksa pas geçtik.
+//If there is, we have converted the notes in localStorage into a arrays, if not, we have passed.
 const notes = JSON.parse(localStorage.getItem("notes") || "[]");
 let isUpdate = false, updateId;
 
@@ -33,7 +33,7 @@ closeIcon.addEventListener("click", () => {
 });
 
 function showNotes(){
-    //aşağıda yeni not gelmeden önce bir önceki notu silen kodu yazdık.
+    //this code deletes the old code before the new one comes.
     document.querySelectorAll(".note").forEach(note => note.remove());
     notes.forEach((note, index)=>{
         let liTag = `
@@ -60,9 +60,9 @@ function showNotes(){
 showNotes();
 
 function showMenu(elem){
-    elem.parentElement.classList.add("show"); //3 nokta -onclick- olduğunda(tıkladığımızda) menu açılıyor.
+    elem.parentElement.classList.add("show"); //this code opens the menu when it becomes active
     document.addEventListener("click", e =>{
-        if(e.target.tagName != "I" || e.target != elem){ //3 noktaya tıkladığımızda geri kapatan kod
+        if(e.target.tagName != "I" || e.target != elem){ //it closes back when we hit it.
             elem.parentElement.classList.remove("show");
         }
     });
@@ -71,8 +71,8 @@ function showMenu(elem){
 function deleteNote(noteId) {
     // let confirmDel = confirm("Are you sure to delete this note?")
     // if(!confirmDel) return;
-    notes.splice(noteId, 1) //seçilen elemanı diziden siler.
-    //localStorage'ı günceller
+    notes.splice(noteId, 1) //it deletes the selected one.
+    //updating localStorage
     localStorage.setItem("notes",JSON.stringify(notes));
     showNotes();
 }
@@ -94,7 +94,7 @@ addBtn.addEventListener("click", e => {
     let noteDesc = descText.value;
 
     if(noteTittle || noteDesc){
-        //güncel ay,gün ve yıl bilgisini elde ettik.
+        //we got the informations of current month,day,year
         let currentDate = new Date();
         year = currentDate.getFullYear(),
         month = months[currentDate.getMonth()],
@@ -106,12 +106,12 @@ addBtn.addEventListener("click", e => {
             date: `${month} ${day}, ${year}`
         }
         if(!isUpdate){
-            notes.push(noteInfo);//yeni notları notes içine kaydettik.
-            //girilen notları localStorage'a string olarak kaydettik.
+            notes.push(noteInfo);//we saved the new notes into "notes".
+            //We saved the entered notes to localStorage as strings.
         }
         else{
             isUpdate = false;
-            notes[updateId] = noteInfo; //ilgili notu güncelledik
+            notes[updateId] = noteInfo; //we updated the notes.
         }
        
         localStorage.setItem("notes",JSON.stringify(notes));
